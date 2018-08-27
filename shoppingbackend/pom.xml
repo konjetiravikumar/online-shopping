@@ -4,15 +4,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.krk</groupId>
-	<artifactId>shoppingbackground</artifactId>
+	<artifactId>shoppingbackend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>shoppingbackground</name>
+	<name>shoppingbackend</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring-version>4.3.18.RELEASE</spring-version>
 	</properties>
 
 	<dependencies>
@@ -22,8 +23,15 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
 
+		<!-- SPRING -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<!-- Update Latest Version Of JAVA -->
@@ -40,5 +48,4 @@
 		</plugins>
 
 	</build>
-
 </project>

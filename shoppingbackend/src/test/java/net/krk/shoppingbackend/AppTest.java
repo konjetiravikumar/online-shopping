@@ -1,4 +1,4 @@
-package net.krk.shoppingbackground;
+package net.krk.shoppingbackend;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
