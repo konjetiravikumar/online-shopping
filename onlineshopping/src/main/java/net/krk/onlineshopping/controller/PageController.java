@@ -1,5 +1,8 @@
 package net.krk.onlineshopping.controller;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,21 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.krk.shoppingbackend.dao.CategoryDAO;
+import net.krk.shoppingbackend.dao.ProductDAO;
 import net.krk.shoppingbackend.dto.Category;
+import net.krk.shoppingbackend.dto.Product;
 
 @Controller
 public class PageController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@RequestMapping(value  = {"/", "/home", "/index"})
 	public ModelAndView index() {
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title","home");
-		
+		logger.info("inside PageController index method!");
+		logger.debug("inside PageController index method!");
 		mv.addObject("categories", categoryDAO.list());
 		
 		mv.addObject("userClickHome",true);
@@ -78,6 +87,29 @@ public class PageController {
 		mv.addObject("userClickCategoryProducts",true);
 		return mv;
 	}
+	
+	@RequestMapping(value  = {"/show/{id}/product"})
+	public ModelAndView showSingleProduct(@PathVariable("id") int id) {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		//productDAO to fetch a single product
+		Product product =null;
+		
+		product = productDAO.get(id);
+		
+		//upate the view count
+		product.setViews(product.getViews()+1);
+		productDAO.update(product);
+		
+		mv.addObject("title",product.getName());
+		//passing the single product
+		mv.addObject("product", product);
+		mv.addObject("userClickShowProduct",true);
+		return mv;
+	}
+	
+	
 	
 	
 	

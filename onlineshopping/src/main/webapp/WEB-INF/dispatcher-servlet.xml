@@ -9,10 +9,8 @@
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<cotext:component-scan
-		base-package="net.krk.onlineshopping.controller" />
-	<cotext:component-scan
-		base-package="net.krk.shoppingbackend.daoimpl" />
+	<cotext:component-scan base-package="net.krk.onlineshopping.controller" />
+	<cotext:component-scan base-package="net.krk.shoppingbackend" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

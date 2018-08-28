@@ -24,11 +24,19 @@
 
 <script>
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
+
 <!-- Bootstrap core CSS -->
-<link href="${css}/bootstrap.min.css" rel="stylesheet">
+<link href="${css}/bootstrap.css" rel="stylesheet">
+<%-- <link href="${css}/bootstrap.min.css" rel="stylesheet"> --%>
+
 <!-- Bootstrap cerulean theme CSS -->
 <link href="${css}/bootstrap-cerulean-themes.css" rel="stylesheet">
+
+<!-- Datatable Pluglin -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/> -->
+<link href="${css}/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -61,20 +69,37 @@
 			</c:if>
 
 			<!-- Load only when user click All Products -->
-			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+			<c:if
+				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 			
+			<!-- Load only when user click show product -->
+			
+			<c:if
+				test="${userClickShowProduct == true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
+
 		</div>
 		<!-- /.container -->
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-
-		<!-- Bootstrap core JavaScript -->
+		
+		
+		<!-- JQuery -->
 		<script src="${js}/jquery.min.js"></script>
+		<script src="${js}/jquery-3.3.1.js"></script>
+		
+		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
-
+		
+		<!-- Datatable Plugin-->
+		<!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> -->
+		<script src="${js}/jquery.dataTables.min.js"></script>
+		<script src="${js}/dataTables.bootstrap4.min.js"></script>
+		
 		<!-- Self coded javascript -->
 		<script src="${js}/myapp.js"></script>
 
