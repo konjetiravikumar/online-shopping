@@ -17,7 +17,8 @@
 		<!-- Display the product image -->
 		<div class="col-xs-12 col-sm-4">
 			<div>
-				<img src="${images}/${product.code}.jpg" class="img-fluid img-responsive" />
+				<img src="${images}/${product.code}.jpg"
+					class="img-fluid img-responsive" />
 			</div>
 		</div>
 
@@ -32,10 +33,23 @@
 				Price: <strong>&#8377; ${product.unitPrice}</strong>
 			</h4>
 			<h6>Qty. Available: ${product.quantity}</h6>
-			<a href="${contextRoot}/cart/add/${product.id}/product"
-				class="btn btn-success"><span
-				class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a> <a
-				href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
+
+			<c:choose>
+				<c:when test="${product.quantity < 1 }">
+					<a href="${contextRoot}/cart/add/${product.id}/product"
+						class="btn btn-success disabled">
+						<strike><span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</strike></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${contextRoot}/cart/add/${product.id}/product"
+						class="btn btn-success">
+						<span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart</a>
+				</c:otherwise>
+
+
+			</c:choose>
+
+			<a href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 		</div>
 
 	</div>

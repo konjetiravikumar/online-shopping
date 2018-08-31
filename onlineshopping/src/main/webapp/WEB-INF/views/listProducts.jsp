@@ -47,7 +47,7 @@
 								<th>Brand</th>
 								<th>Price</th>
 								<th>Qty. Available</th>
-								<th></th>
+								<th class="w-15"></th>
 							</tr>
 						</thead>
 
